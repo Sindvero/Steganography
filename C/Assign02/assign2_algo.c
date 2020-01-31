@@ -5,6 +5,9 @@ int str2bin(char *str) {
 
     char *ptr = str;
     int i;
+    char str1[] = "1";
+    char str0[] = "0";
+    FILE *fp = fopen("output_file.txt", "a");
 
     for(; *ptr != 0; ++ptr)
     {
@@ -13,14 +16,17 @@ int str2bin(char *str) {
         for(i = 7; i >= 0; --i) {
             if (*ptr & 1 << i){
                  putchar('1');
+                 fwrite(str1, 1, sizeof(str1), fp);
              } else{
                  putchar('0');
+                 fwrite(str0, 1, sizeof(str0), fp);
              }
         }
-
+        fwrite(" ", 1, sizeof(" "), fp);
         putchar(' ');
     }
 
+    fclose(fp);
     putchar('\n');
 
 
