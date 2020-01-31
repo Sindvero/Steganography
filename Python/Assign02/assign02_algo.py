@@ -10,8 +10,17 @@ def str2bin(text, encoding='utf-8', errors='surrogatepass'):
     return bits.zfill(8 * ((len(bits) + 7) // 8)) # each ASCII character is 8 bits
 
 
-
+# Open both input and output file
 fp = open("Python/Assign02/output_file.txt", "a")
-fp.write(str2bin("AAAA\n"))
+fp_declaration_of_independant = open("Python/Assign02/Declaration_of_Independence.txt", "r")
+
+# Store input text in a string buffer
+buffer = fp_declaration_of_independant.read()
+
+# Close input file
+fp_declaration_of_independant.close()
+
+# Transform ASCII char into binary and store them within a text file
+fp.write(str2bin(buffer))
 fp.close()
-print(str2bin("AAAA\n"))
+print(str2bin(buffer))
