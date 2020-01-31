@@ -1,4 +1,4 @@
-#include "assign2_algo.h"
+#include "assign02_algo.h"
 
 
 int str2bin(char *str) {
