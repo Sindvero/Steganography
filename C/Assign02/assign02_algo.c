@@ -41,7 +41,17 @@ int main(int argc, char *argv[])
          return 0; /* no input string */
     }
 
-    str2bin(argv[1]);
+    FILE *fp = fopen(argv[1], "r");
+    fseek(fp, 0, SEEK_END);
+    long fsize = ftell(fp);
+    fseek(fp, 0, SEEK_SET); 
+    char *buffer = malloc(fsize + 1);
+
+    fread(buffer, 1, fsize, fp);
+
+    fclose(fp);
+
+    str2bin(buffer);
     
     return 0;
 }
