@@ -11,4 +11,7 @@ def str2bin(text, encoding='utf-8', errors='surrogatepass'):
 
 
 
+fp = open("Python/Assign02/output_file.txt", "a")
+fp.write(str2bin("AAAA\n"))
+fp.close()
 print(str2bin("AAAA\n"))
