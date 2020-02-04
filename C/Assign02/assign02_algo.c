@@ -22,7 +22,6 @@ int str2bin(char *str) {
                  fwrite(str0, 1, sizeof(str0), fp);
              }
         }
-        fwrite(" ", 1, sizeof(" "), fp);
         putchar(' ');
     }
 

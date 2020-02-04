@@ -5,4 +5,5 @@
 
 
 
+
 int str2bin(char *str);
