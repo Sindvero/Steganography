@@ -12,7 +12,8 @@ def str2bin(text, encoding='utf-8', errors='surrogatepass'):
 def bin2str(text, encoding='utf-8', errors='surrogatepass'):
     n = int(text, 2)
 
-    return n.to_bytes((n.bit_length() + 7) // 8, 'big').decode(encoding,errors) or '\0'
+    return n.to_bytes((n.bit_length() + 7) // 8, 'big').decode(encoding,errors) or '\0' # Python doc references: 
+                                                                                        # https://docs.python.org/3/library/stdtypes.html
 
 
 ###################################
