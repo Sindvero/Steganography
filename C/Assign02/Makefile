@@ -1,13 +1,15 @@
-SRC = $(wildcard *.c)
-BIN = $(patsubst %.c,%,$(SRC))
-CFLAGS = -Wall -Wextra -g
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -g
+LDFLAGS 	= 	-lm
+OBJFILES	= assign02_algo.o
+TARGET		= assign02_algo
 
+all: $(TARGET)
 
-all: $(BIN)
+$(TARGET): $(OBJFILES)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJFILES) $(LDFLAGS)
 
 clean:
-	rm -f $(BIN)
-	rm -f *.o
+	rm -f $(OBJFILES) $(TARGET) 
+	rm -f test_return.txt
 	rm -f output_file.txt
-
-.PHONY: all clean
