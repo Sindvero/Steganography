@@ -11,5 +11,5 @@ $(TARGET): $(OBJFILES)
 
 clean:
 	rm -f $(OBJFILES) $(TARGET) 
-	rm -f test_return.txt
+	rm -f output_return.txt
 	rm -f output_file.txt

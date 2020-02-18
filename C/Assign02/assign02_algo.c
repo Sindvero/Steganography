@@ -15,10 +15,8 @@ int str2bin(char *str) {
         /* perform bitwise AND for every bit of the character */
         for(i = 7; i >= 0; i--) {
             if (*ptr & 1 << i){
-                 putchar('1');
                  fwrite(&str1, 1, sizeof(char), fp);
              } else{
-                 putchar('0');
                  fwrite(&str0, 1, sizeof(char), fp);
              }
         }
@@ -26,9 +24,9 @@ int str2bin(char *str) {
     }
 
     fclose(fp);
-    putchar('\n');
     return 0;
 }
+
 void binaryToString(char* input, char* output){
 
     char binary[9] = {0}; // initialize string to 0's
@@ -47,29 +45,30 @@ int main(int argc, char *argv[])
          return 0; /* no input string */
     }
 
-    FILE *fp = fopen(argv[1], "r");
-    fseek(fp, 0, SEEK_END);
-    long fsize = ftell(fp);
-    fseek(fp, 0, SEEK_SET); 
-    char *buffer = malloc(fsize + 1);
+    // Transform ASCII to binary
+    FILE *fpInput = fopen(argv[1], "r");
+    fseek(fpInput, 0, SEEK_END);
+    long fsize = ftell(fpInput);
+    fseek(fpInput, 0, SEEK_SET); 
+    char *bufferInput = malloc(fsize + 1);
 
-    fread(buffer, 1, fsize, fp);
+    fread(bufferInput, 1, fsize, fpInput);
 
-    fclose(fp);
-    // printf("%s\n", buffer);
-    str2bin(buffer);
+    fclose(fpInput);
 
-    FILE *fp1 = fopen("output_file.txt", "r");
-    fseek(fp1, 0, SEEK_END);
-    long fsize1 = ftell(fp1);
-    fseek(fp1, 0, SEEK_SET); 
+    str2bin(bufferInput);
+
+    // Transform back to ASCII
+    FILE *fpBin = fopen("output_file.txt", "r");
+    fseek(fpBin, 0, SEEK_END);
+    long fsize1 = ftell(fpBin);
+    fseek(fpBin, 0, SEEK_SET); 
     char buffer1[fsize1];
-    fread(&buffer1, 1, fsize1, fp1);
-    fclose(fp1);
-    printf("%s\n", buffer1);
+    fread(&buffer1, 1, fsize1, fpBin);
+    fclose(fpBin);
 
 
-    FILE *fp2 = fopen("test_return.txt", "a");
+    FILE *fpOutput = fopen("output_return.txt", "a");
 
     char outputStr[fsize1]; // initialize string to 0's
 
@@ -80,9 +79,8 @@ int main(int argc, char *argv[])
         binaryToString(&buffer1[i*8], &outputStr[i]);
     }
 
-    printf("%s\n", outputStr); // print the resulting string
-    fwrite(outputStr, 1, fsize, fp2);
-    fclose(fp2);
+    fwrite(outputStr, 1, fsize, fpOutput);
+    fclose(fpOutput);
     
     return 0;
 }
