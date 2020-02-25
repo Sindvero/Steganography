@@ -20,6 +20,7 @@ int str2bin(char *str) {
                  fwrite(&str0, 1, sizeof(char), fp);
              }
         }
+        
         // putchar(' ');
     }
 
