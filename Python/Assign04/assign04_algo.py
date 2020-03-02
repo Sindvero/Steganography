@@ -29,10 +29,10 @@ def infoBMPImage(image):
                                                                                                              # https://en.wikipedia.org/wiki/BMP_file_format#Bitmap_file_header
                                                                                                              # https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-bitmapv5header
 
-    # Another solution would have been to read the data with open(image, 'rb') (the first one I use) 
-    # But the solution with the exiftool command make it more simple to read the data aftermath  
-    # The second solution would have been to see each parameters of the bmp file as string like this:
-    # bufferInfo[0xXX] with XX = offset given by the documentation and bufferInfo = BMPfile.read() (cf writeBMP function)
+    # Another solution would have been to read the data with open(image, 'rb') (the first one I use): 
+    # Then to store the file in a string and iterate within this string with the offset:
+    # bufferInfo[0xXX] with XX = offset given by the documentation and bufferInfo = BMPfile.read() (cf writeBMP function);
+    # But the solution with the exiftool command make it more simple to read the data aftermath.
     
     print("The file size is: " + infoDict["File Size"])
     print("The image dimensions are: {0}x{1}".format(infoDict["Image Width"], infoDict["Image Height"]))
