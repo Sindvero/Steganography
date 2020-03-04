@@ -1,7 +1,7 @@
 import imghdr
 import subprocess
 
-
+# Please run sudo apt-get install libimage-exiftool-perl before running this script
 def infoBMPImage(image):
     imageType = imghdr.what(image) # library used to chek bmp file: https://docs.python.org/3.6/library/imghdr.html
     infoDict = {}
