@@ -32,6 +32,7 @@ def infoBMPImage(image):
     # Another solution would have been to read the data with open(image, 'rb') (the first one I use): 
     # Then to store the file in a string and iterate within this string with the offset:
     # bufferInfo[0xXX] with XX = offset given by the documentation and bufferInfo = BMPfile.read() (cf writeBMP function);
+    # e.g. buffer[0x0E] will give you 124 in this case because it is the offset of the header size.
     # But the solution with the exiftool command make it more simple to read the data aftermath.
     
     print("The file size is: " + infoDict["File Size"])
